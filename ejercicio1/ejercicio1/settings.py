@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Aditional apps
-    'clients',
-    'kind_details',
     'invoices',
 ]
 
