@@ -1,8 +1,8 @@
 # Models
-from invoices.models import Client
+from invoices.models.clients import Client
 
 def verificaExistencia(cuit2):
-    # Verifica la existencia de un cliente mediante su cuit
+    """Verifica la existencia de un cliente mediante su cuit"""
     if Client.objects.filter(cuit=cuit2).exists():
         return True
     else:
@@ -10,7 +10,7 @@ def verificaExistencia(cuit2):
 
 
 def alta(cuit2, name, clientCode):
-    # Da de alta un cliente con los datos: cuit, name y cliente code
+    """Da de alta un cliente con los datos: cuit, name y cliente code"""
 
     if not verificaExistencia(cuit2):
     # Si no existe un cliente con este cuit, instancia la clase Client, y registra los datos en la bd
@@ -29,7 +29,7 @@ def alta(cuit2, name, clientCode):
 
 
 def baja(cuit2):
-    # Da de baja un cliente mediante su cuit
+    """Da de baja un cliente mediante su cuit"""
     
     # Obtiene la instancia cuyo cuit sea igual al solicitado, verifica que exista y luego lo elimina de la bd     
     if (verificaExistencia(cuit2)):
@@ -44,7 +44,7 @@ def baja(cuit2):
 
 
 def modifica(cuit2, name, clientCode):
-    # Modifica datos de un cliente mediante su cuit (suponiendo que solo puede cambiarse el name y el clientCode)
+    """Modifica datos de un cliente mediante su cuit (suponiendo que solo puede cambiarse el name y el clientCode)"""
 
     # Obtiene la instancia cuyo cuit sea igual al solicitado, verifica que exista y luego lo modifica 
     if (verificaExistencia(cuit2)):

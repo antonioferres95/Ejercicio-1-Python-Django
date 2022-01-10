@@ -1,9 +1,9 @@
 # Models
-from invoices.models import KindDetail
+from invoices.models.kinds_detail import KindDetail
 
 
 def verificaExistencia(id2):
-    # Verifica la existencia de un tipo detalle mediante su id
+    """Verifica la existencia de un tipo detalle mediante su id"""
     if KindDetail.objects.filter(id=id2).exists():
         return True
     else:
@@ -11,7 +11,7 @@ def verificaExistencia(id2):
 
 
 def alta(name):
-    # Da de alta un tipo detalle con el dato: name
+    """Da de alta un tipo detalle con el dato: name"""
 
     # Instancia la clase KindDetail, y registra los datos en la bd
     try:
@@ -24,7 +24,7 @@ def alta(name):
 
 
 def baja(id2):
-    # Da de baja un tipo detalle mediante su id
+    """Da de baja un tipo detalle mediante su id"""
 
     # Obtiene la instancia cuyo id sea igual al solicitado, verifica que exista y luego lo elimina de la bd
     if (verificaExistencia(id2)):
@@ -39,7 +39,7 @@ def baja(id2):
 
 
 def modifica(id2, name):
-    # Modifica datos (tipodetalle solo tiene name) de un tipo detalle mediante su id
+    """Modifica datos (tipodetalle solo tiene name) de un tipo detalle mediante su id"""
 
     # Obtiene la instancia cuyo id sea igual al solicitado, verifica que exista y luego lo modifica en la bd
     if(verificaExistencia(id2)):

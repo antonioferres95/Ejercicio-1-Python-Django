@@ -1,9 +1,10 @@
 # Models
-from invoices.models import Invoice, Client
+from invoices.models.clients import  Client
+from invoices.models.invoices import  Invoice
 
 
 def verificaExistencia(id2):
-    # Verifica la existencia de una factura mediante su id
+    """Verifica la existencia de una factura mediante su id"""
     if Invoice.objects.filter(id=id2).exists():
         return True
     else:
@@ -11,7 +12,7 @@ def verificaExistencia(id2):
 
 
 def alta(number, cuit2):
-    # Da de alta una factura con el dato: number (date se carga automaticamente al cargar la factura)
+    """Da de alta una factura con el dato: number (date se carga automaticamente al cargar la factura)"""
 
     # Verifica que exista un cliente con dicho cuit, instancia la clase Invoice, y registra los datos en la bd
     if (Client.objects.filter(cuit=cuit2).exists()):
@@ -29,7 +30,7 @@ def alta(number, cuit2):
 
 
 def baja(id2):
-    # Da de baja una factura mediante su id
+    """Da de baja una factura mediante su id"""
 
     # Obtiene la instancia cuyo id sea igual al solicitado, verifica su existencia y luego lo elimina de la bd
     if (verificaExistencia(id2)):
@@ -44,9 +45,9 @@ def baja(id2):
 
 
 def modifica(id2, number, date):
-    #Modifica datos de una factura mediante su id
+    """Modifica datos de una factura mediante su id"""
 
-     # Obtiene la instancia cuyo id sea igual al solicitado, verifica que exista y luego lo modifica en la bd
+    # Obtiene la instancia cuyo id sea igual al solicitado, verifica que exista y luego lo modifica en la bd
     if(verificaExistencia(id2)):
         try:
             fac = Invoice.objects.get(id=id2)
