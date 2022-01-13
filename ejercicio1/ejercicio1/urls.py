@@ -1,6 +1,15 @@
+# Django
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+# Django REST Framework
+from rest_framework.routers import DefaultRouter
+
+# Models
 from invoices.views import clients, invoices, kinds_detail
+
+router = DefaultRouter()
+router.register(r'kinds_detail', kinds_detail.KindDetailViewSet, basename='kinds_detail')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,10 +21,7 @@ urlpatterns = [
     path('clientes/modifica_cliente', clients.modificaCliente),
 
     # Tipos detalle
-    path('tipos_detalle/', kinds_detail.index),
-    path('tipos_detalle/alta_tipo_detalle', kinds_detail.altaTipoDetalle),
-    path('tipos_detalle/baja_tipo_detalle', kinds_detail.bajaTipoDetalle),
-    path('tipos_detalle/modifica_tipo_detalle', kinds_detail.modificaTipoDetalle),
+    path('', include(router.urls)),
 
     # Facturas
     path('facturas/', invoices.index),

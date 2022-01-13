@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     #Aditional apps
     'invoices',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
