@@ -10,17 +10,12 @@ from invoices.views import clients, invoices, kinds_detail
 
 router = DefaultRouter()
 router.register(r'kinds_detail', kinds_detail.KindDetailViewSet, basename='kinds_detail')
+router.register(r'clients', clients.ClientViewSet, basename='clients')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # Clientes
-    path('clientes/', clients.index),
-    path('clientes/alta_cliente', clients.altaCliente),
-    path('clientes/baja_cliente', clients.bajaCliente),
-    path('clientes/modifica_cliente', clients.modificaCliente),
-
-    # Tipos detalle
+    # Clientes, Tipos Detalle
     path('', include(router.urls)),
 
     # Facturas
